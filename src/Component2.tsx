@@ -1,1 +1,0 @@
-export const Component2 = () => {return <div id="secondDiv"></div>}
