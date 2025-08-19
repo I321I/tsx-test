@@ -8,17 +8,18 @@ import { useState } from "react";
 export const AnimeList = () => {
   const [count, setCount] = useState(8)
   const [word, setWord] = useState("hello,")
-  const result = recentUpdateAnime.map((anime, index) => {
-    return <div style={{ color: `#${index}${index}${index}` }}>{anime != null && anime} </div>
-  })
-  const animeList = recentUpdateAnime.map((anime) => <AnimeItem title={anime} />)
+  const animeList = recentUpdateAnime.map((anime) => 
+  <AnimeItem title={anime} />)
+
   //onst separateAnimeItem = 
   return (
     <div id="firstDiv">
+      <div className="title">Recent Update Anime</div>
       {count + word}
-      {result}
+      <div>
       {animeList}
-      <button onClick={() => {setCount(count + 1); setWord(word + "world" )}}></button>
+      </div>
+      <button onClick={() => { setCount(count + 1); setWord(word + "world") }}></button>
     </div>
   )
 }

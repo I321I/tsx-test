@@ -4,5 +4,5 @@ interface AnimeItemProps {
     title?: string
 }
 export const AnimeItem: React.FC<AnimeItemProps> = ({ title }) => {
-    return <div id="AnimeItem"> {title}</div>
+    return <div id="AnimeItem"> {title}<button></button></div>
 }
