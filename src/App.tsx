@@ -10,8 +10,7 @@ function App() {
   return (
     <Fragment>
       <div className='container'>
-      <AnimeList></AnimeList>
-
+        <AnimeList></AnimeList>
       </div>
     </Fragment>
   )

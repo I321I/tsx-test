@@ -1,6 +1,5 @@
 #AnimeItem {
     background-color: gray;
-    width: 500px;
     text-align: left;
     flex-direction: row;
     justify-content: space-between;

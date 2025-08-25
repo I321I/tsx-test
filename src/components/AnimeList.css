@@ -5,10 +5,14 @@
 
  #firstDiv {
      background-color: #b41f1f98;
-     width: 500px;
  }
 
  .title {
      color: rgba(255, 255, 0, 1);
      font-size: 50px;
+ }
+
+#animeList {
+     gap: 5px;
+     padding: 10px;
  }

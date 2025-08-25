@@ -3,23 +3,30 @@ import "./AnimeList.css"
 import i from "./Component2";
 import { recentUpdateAnime } from "../constant";
 import { AnimeItem } from "./AnimeItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const AnimeList = () => {
   const [count, setCount] = useState(8)
   const [word, setWord] = useState("hello,")
-  const animeList = recentUpdateAnime.map((anime) => 
-  <AnimeItem title={anime} />)
-
+  const [animeSource, setSource] = useState<string[]>([])
+  useEffect(() => {
+    setSource(recentUpdateAnime)
+  }, [])
+  const animeList = animeSource.map((anime) =>
+    <AnimeItem title={anime} />)
+  const [, ...rest] = animeSource
   //onst separateAnimeItem = 
   return (
     <div id="firstDiv">
       <div className="title">Recent Update Anime</div>
       {count + word}
-      <div>
-      {animeList}
+      <div id="animeList">
+        {animeList}
       </div>
-      <button onClick={() => { setCount(count + 1); setWord(word + "world") }}></button>
+
+      <button onClick={() => { setCount(count + 1); setWord(word + "world");
+         setSource(rest)
+         }}></button>
     </div>
   )
 }
