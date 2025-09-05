@@ -12,21 +12,30 @@ export const AnimeList = () => {
   useEffect(() => {
     setSource(recentUpdateAnime)
   }, [])
-  const animeList = animeSource.map((anime) =>
-    <AnimeItem title={anime} />)
+  const animeList = animeSource.map((anime, i) =>
+    <AnimeItem title={anime} onClick={
+      () => {
+        setSource(
+          [
+            ...animeSource.slice(0, i),
+            ...animeSource.slice(i + 1, animeSource.length)
+          ]
+        )
+      }} />)
   const [, ...rest] = animeSource
   //onst separateAnimeItem = 
   return (
     <div id="firstDiv">
       <div className="title">Recent Update Anime</div>
-      {count + word}
+      {count + word}1
       <div id="animeList">
         {animeList}
       </div>
 
-      <button onClick={() => { setCount(count + 1); setWord(word + "world");
-         setSource(rest)
-         }}></button>
+      <button onClick={() => {
+        setCount(count + 1); setWord(word + "world");
+        setSource(rest)
+      }}></button>
     </div>
   )
 }
