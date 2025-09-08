@@ -1,13 +1,30 @@
-import "./AnimeItem.css"
 import { recentUpdateAnime } from "../constant";
+import styled from 'styled-components'
+
+
+const Button = styled.button`
+    border-width: 0px;
+    border-radius: 3px;
+    padding: 5px 20px;
+    `
+
+const AnimeItemDiv = styled.div`
+    background-color: rgba(130, 96, 150, 0.322);
+    text-align: left;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 4px;
+    padding: 3px 10px;
+`
+
 interface AnimeItemProps {
     title?: string
     onClick: () => void
 }
 export const AnimeItem: React.FC<AnimeItemProps> = ({ title, onClick }) => {
     return (
-        <div id="AnimeItem"> {title}
-            <button onClick={onClick}>X</button>
-        </div>
+        <AnimeItemDiv id="AnimeItem"> {title}
+            <Button onClick={onClick}>X</Button>
+        </AnimeItemDiv>
     )
 }

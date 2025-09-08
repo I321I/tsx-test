@@ -1,9 +1,22 @@
-import { Component2 } from "./Component2"
 import "./AnimeList.css"
-import i from "./Component2";
 import { recentUpdateAnime } from "../constant";
 import { AnimeItem } from "./AnimeItem";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
+
+const FirstDiv = styled.div`
+     background-color: #cacaca;
+ `
+
+const TitleDiv = styled.div`
+     color: rgb(197, 47, 190);
+     font-size: 50px;
+ `
+
+const AnimeListDiv = styled.div`
+     gap: 5px;
+     padding: 10px;
+ `
 
 export const AnimeList = () => {
   const [count, setCount] = useState(8)
@@ -25,17 +38,17 @@ export const AnimeList = () => {
   const [, ...rest] = animeSource
   //onst separateAnimeItem = 
   return (
-    <div id="firstDiv">
-      <div className="title">Recent Update Anime</div>
+    <FirstDiv>
+      <TitleDiv>Recent Update Anime</TitleDiv>
       {count + word}1
-      <div id="animeList">
+      <AnimeListDiv>
         {animeList}
-      </div>
+      </AnimeListDiv>
 
       <button onClick={() => {
         setCount(count + 1); setWord(word + "world");
         setSource(rest)
       }}></button>
-    </div>
+    </FirstDiv>
   )
 }
