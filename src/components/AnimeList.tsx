@@ -2,21 +2,7 @@ import "./AnimeList.css"
 import { recentUpdateAnime } from "../constant";
 import { AnimeItem } from "./AnimeItem";
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 
-const FirstDiv = styled.div`
-     background-color: #cacaca;
- `
-
-const TitleDiv = styled.div`
-     color: rgb(197, 47, 190);
-     font-size: 50px;
- `
-
-const AnimeListDiv = styled.div`
-     gap: 5px;
-     padding: 10px;
- `
 
 export const AnimeList = () => {
   const [count, setCount] = useState(8)
