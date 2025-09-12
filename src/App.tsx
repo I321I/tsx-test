@@ -16,9 +16,9 @@ function App() {
 
   return (
     <Fragment>
-      <ContainerDiv>
+      <div className='container'>
         <AnimeList></AnimeList>
-      </ContainerDiv>
+      </div>
     </Fragment>
   )
 }

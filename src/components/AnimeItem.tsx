@@ -1,8 +1,8 @@
 import { recentUpdateAnime } from "../constant";
 import styled from 'styled-components'
+import Button from 'react-bootstrap/Button';
 
-
-const Button = styled.button`
+const preButton = styled.button`
     border-width: 0px;
     border-radius: 3px;
     padding: 5px 20px;
@@ -24,7 +24,7 @@ interface AnimeItemProps {
 export const AnimeItem: React.FC<AnimeItemProps> = ({ title, onClick }) => {
     return (
         <AnimeItemDiv id="AnimeItem"> {title}
-            <Button onClick={onClick}>X</Button>
+            <Button variant="secondary" onClick={onClick}>X</Button>
         </AnimeItemDiv>
     )
 }
