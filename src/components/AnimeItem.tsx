@@ -8,8 +8,8 @@ interface AnimeItemProps {
 }
 export const AnimeItem: React.FC<AnimeItemProps> = ({ title, onClick }) => {
     return (
-        <AnimeItemDiv id="AnimeItem"> {title}
+        <div id="AnimeItem"> {title}
             <Button variant="secondary" onClick={onClick}>X</Button>
-        </AnimeItemDiv>
+        </div>
     )
 }

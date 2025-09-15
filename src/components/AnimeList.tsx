@@ -1,4 +1,3 @@
-import "./AnimeList.css"
 import { recentUpdateAnime } from "../constant";
 import { AnimeItem } from "./AnimeItem";
 import { useEffect, useState } from "react";
@@ -24,17 +23,17 @@ export const AnimeList = () => {
   const [, ...rest] = animeSource
   //onst separateAnimeItem = 
   return (
-    <FirstDiv>
-      <TitleDiv>Recent Update Anime</TitleDiv>
+    <div className="FirstDiv">
+      <div className="TitleDiv">Recent Update Anime</div>
       {count + word}1
-      <AnimeListDiv>
+      <div className="AnimeListDiv">
         {animeList}
-      </AnimeListDiv>
+      </div>
 
       <button onClick={() => {
         setCount(count + 1); setWord(word + "world");
         setSource(rest)
       }}></button>
-    </FirstDiv>
+    </div>
   )
 }
