@@ -1,6 +1,7 @@
 import { recentUpdateAnime } from "../constant";
 import Button from 'react-bootstrap/Button';
-
+import ListGroup from 'react-bootstrap/ListGroup';
+import CloseButton from 'react-bootstrap/CloseButton'
 
 interface AnimeItemProps {
     title?: string
@@ -8,8 +9,8 @@ interface AnimeItemProps {
 }
 export const AnimeItem: React.FC<AnimeItemProps> = ({ title, onClick }) => {
     return (
-        <div id="AnimeItem"> {title}
-            <Button variant="secondary" onClick={onClick}>X</Button>
-        </div>
+        <ListGroup.Item id="AnimeItem" className="d-flex justify-content-between"> {title}
+            <CloseButton variant="secondary" onClick={onClick}/>
+        </ListGroup.Item>
     )
 }
