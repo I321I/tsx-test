@@ -3,6 +3,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import { AnimeList } from './components/AnimeList'
 import styled from 'styled-components'
+import Navigation, { navigationConfig } from './components/Navigation'
+import { Route, Routes } from 'react-router'
+import EmptyContent from './components/EmptyContent'
 
 const ContainerDiv = styled.div`
     display: flex;
@@ -17,7 +20,12 @@ function App() {
   return (
     <Fragment>
       <div className='container'>
-        <AnimeList></AnimeList>
+        <Navigation>
+        </Navigation>
+        <Routes>
+          <Route path={navigationConfig[0].to} element={navigationConfig[0].element} />
+          <Route path={navigationConfig[1].to} element={navigationConfig[1].element} />
+        </Routes>
       </div>
     </Fragment>
   )
