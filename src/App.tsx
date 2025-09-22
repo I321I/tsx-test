@@ -20,11 +20,11 @@ function App() {
   return (
     <Fragment>
       <div className='container'>
-        <Navigation>
-        </Navigation>
-        <Routes>
+        <Navigation></Navigation>
+        <Routes>{/* 動態的根據網址顯示內容 */}
           <Route path={navigationConfig[0].to} element={navigationConfig[0].element} />
           <Route path={navigationConfig[1].to} element={navigationConfig[1].element} />
+          <Route path={navigationConfig[2].to} element={navigationConfig[2].element} />
         </Routes>
       </div>
     </Fragment>

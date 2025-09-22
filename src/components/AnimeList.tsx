@@ -12,7 +12,7 @@ export const AnimeList = () => {
   }, [])
   const animeList =
     animeSource.map((anime, i) =>
-      <AnimeItem title={anime} onClick={
+      <AnimeItem key={anime} title={anime} onClick={
         () => {
           setSource(
             [
