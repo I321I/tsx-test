@@ -28,9 +28,11 @@ export const PetitionList: React.FC<PotitionListProps> = ({ title, onClick }) =>
         })()
     }, [url])
     return (
-        <div>
+        <div className="d-flex flex-column">
             {pList}
-            {JSON.stringify(data)}
+            <div className="d-flex pt-4">
+                {JSON.stringify(data)}
+            </div>
         </div>
     )
 }
