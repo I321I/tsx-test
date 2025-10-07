@@ -15,11 +15,11 @@ export const navigationConfig = [
 export default function Navigation() {
     const location = useLocation()
     const navigationTabs =
-        navigationConfig.map((tab, i) => {
-            return <Nav.Item>
-                <Nav.Link as={NavLink} to={navigationConfig[i].to}>{navigationConfig[i].label}</Nav.Link>
+        navigationConfig.map((tab) =>
+            <Nav.Item>
+                <Nav.Link as={NavLink} to={tab.to}>{tab.label}</Nav.Link>
             </Nav.Item>
-        })
+        )
 
     return (
         <Nav variant="tabs" defaultActiveKey={location.pathname}>
