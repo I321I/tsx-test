@@ -17,7 +17,7 @@ const petitionItem = [
     },
     {
         url: 'https://data.moa.gov.tw/Service/OpenData/TransService.aspx?UnitId=KONI7prP3jgu&IsTransData=1',
-        getData: (item: object) => item
+        getData: (item: unknown) => item
     }
 ]
 export const PetitionList: React.FC<PotitionListProps> = ({ title, onClick }) => {
@@ -27,15 +27,15 @@ export const PetitionList: React.FC<PotitionListProps> = ({ title, onClick }) =>
     const reg = /.+\/(.+)/
     const pList = pItem.map((item) =>
         <button type="button" className="btn btn-link"
-            onClick={() => { setUrl(item.url), setGetData(item.getData)}}>
+            onClick={() => { setUrl(item.url), setGetData(()=>item.getData) }}>
             {reg.exec(item.url)?.[1]}
         </button>
     )
-    const [data, setData] = useState<object>()
+    const [data, setData] = useState<unknown>()
     useEffect(() => {
         (async () => {
             const response = await fetch(url)
-            const data: object| object[] = await response.json()
+            const data: object | object[] = await response.json()
             setData(getData(data))
         })()
     }, [url])
