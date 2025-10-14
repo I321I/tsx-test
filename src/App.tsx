@@ -16,15 +16,16 @@ const ContainerDiv = styled.div`
 
 function App() {
   const [count, setCount] = useState(0)
+  const routes = navigationConfig.map((item) =>
+    <Route path={item.to} element={item.element} />
+  )
 
   return (
     <Fragment>
       <div className='container'>
         <Navigation></Navigation>
         <Routes>{/* 動態的根據網址顯示內容 */}
-          <Route path={navigationConfig[0].to} element={navigationConfig[0].element} />
-          <Route path={navigationConfig[1].to} element={navigationConfig[1].element} />
-          <Route path={navigationConfig[2].to} element={navigationConfig[2].element} />
+          {routes}
         </Routes>
       </div>
     </Fragment>
