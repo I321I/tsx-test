@@ -5,26 +5,38 @@ interface PotitionListProps {
     title?: string
     onClick?: () => void
 }
+
+const petitionItem = [
+    {
+        url: 'https://soa.tainan.gov.tw/Api/Service/Get/3a6a5741-b4f1-4db5-a5ce-a08ffc334a11',
+        getData: (item: object) => "data" in item ? item.data : []
+    },
+    {
+        url: 'https://soa.tainan.gov.tw/Api/Service/Get/151f1365-a992-447f-a0bb-fb6c90bd7610',
+        getData: (item: object) => "data" in item ? item.data : []
+    },
+    {
+        url: 'https://data.moa.gov.tw/Service/OpenData/TransService.aspx?UnitId=KONI7prP3jgu&IsTransData=1',
+        getData: (item: object) => item
+    }
+]
 export const PetitionList: React.FC<PotitionListProps> = ({ title, onClick }) => {
-    const [url, setUrl] = useState('https://soa.tainan.gov.tw/Api/Service/Get/3a6a5741-b4f1-4db5-a5ce-a08ffc334a11')
-    const pItem = [
-        'https://soa.tainan.gov.tw/Api/Service/Get/3a6a5741-b4f1-4db5-a5ce-a08ffc334a11',
-        'https://soa.tainan.gov.tw/Api/Service/Get/151f1365-a992-447f-a0bb-fb6c90bd7610',
-        'https://data.moa.gov.tw/Service/OpenData/TransService.aspx?UnitId=KONI7prP3jgu&IsTransData=1'
-    ]
+    const pItem = petitionItem
+    const [url, setUrl] = useState(pItem[0].url)
+    const [getData, setGetData] = useState(() => pItem[0].getData)
     const reg = /.+\/(.+)/
     const pList = pItem.map((item) =>
         <button type="button" className="btn btn-link"
-            onClick={() => { setUrl(item) }}>
-            {reg.exec(item)?.[1]}
+            onClick={() => { setUrl(item.url), setGetData(item.getData)}}>
+            {reg.exec(item.url)?.[1]}
         </button>
     )
     const [data, setData] = useState<object>()
     useEffect(() => {
         (async () => {
             const response = await fetch(url)
-            const data = await response.json()
-            setData(data)
+            const data: object| object[] = await response.json()
+            setData(getData(data))
         })()
     }, [url])
     return (
