@@ -8,18 +8,18 @@ interface PotitionListProps {
 
 interface TableProps<T extends object> {
     columns: (keyof T)[]
-    data: T[]
+    data: T[] 
 }
 
-const mockData: TableProps<{ "屬性": number; "薩爾達": number; "評價": number; "長度": number; 123: number }> = {
-    columns: ["屬性", "薩爾達", "評價", "長度", 123],
-    data: [
-        { "屬性": 1, "薩爾達": 2, "評價": 3, "長度": 4, 123: 123 },
-        { "屬性": 4, "薩爾達": 3, "評價": 2, "長度": 1, 123: 123 },
-        { "屬性": 1, "薩爾達": 2, "評價": 4, "長度": 3, 123: 123 },
-        { "屬性": 1, "薩爾達": 3, "評價": 2, "長度": 4, 123: 123 },
-    ]
-}
+
+// const mockData: TableProps<{ "年份": string; "防疫用藥": string; "預防性用藥": string }> = {
+//     columns: ["年份", "防疫用藥", "預防性用藥"],
+//     data: [
+//         { "年份": "104", "防疫用藥": "亞培松", "預防性用藥": "亞滅寧" },
+//         { "年份": "104", "防疫用藥": "撲滅松", "預防性用藥": "第滅寧" },
+//         { "年份": "104", "防疫用藥": "", "預防性用藥": "" }
+//     ]
+// }
 
 const petitionItem = [
     {
@@ -55,22 +55,27 @@ export const PetitionList: React.FC<PotitionListProps> = ({ title, onClick }) =>
         })()
     }, [url])
 
+    const mockData: TableProps<{ "年份": string; "防疫用藥": string; "預防性用藥": string }> = {
+        columns: ["年份", "防疫用藥", "預防性用藥"],
+        data: data as any
+    }
+    
+
     const tableHead =
         <tr>
-            {mockData.columns.map((item) =>
+            {mockData?.columns?.map((item) =>
                 <th>{item}</th>
             )}
         </tr>
 
-    const tableBody = mockData.data.map((item) => {
+    const tableBody = mockData?.data?.map((item) => {
         return (
             <tr>
-                {mockData.columns.map((column) =>
+                {mockData?.columns?.map((column) =>
                     <td>{item[column]}</td>
                 )}
             </tr>)
     })
-
 
 
 
