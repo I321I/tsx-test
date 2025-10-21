@@ -2,8 +2,7 @@ import { useEffect, useState, type JSX, type JSXElementConstructor } from "react
 import { data, useActionData } from "react-router"
 import Table from 'react-bootstrap/Table';
 interface PotitionListProps {
-    title?: string
-    onClick?: () => void
+
 }
 
 interface TableProps<T extends object> {
@@ -35,7 +34,7 @@ const petitionItem = [
         getData: (item: unknown) => item
     }
 ]
-export const PetitionList: React.FC<PotitionListProps> = ({ title, onClick }) => {
+export const PetitionList: React.FC<PotitionListProps> = () => {
     const pItem = petitionItem
     const [url, setUrl] = useState(pItem[0].url)
     const [getData, setGetData] = useState(() => pItem[0].getData)
