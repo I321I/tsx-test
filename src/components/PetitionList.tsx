@@ -8,7 +8,7 @@ interface PotitionListProps {
 
 interface TableProps<T extends object> {
     columns: (keyof T)[]
-    data: T[] 
+    data: T[]
 }
 
 
@@ -55,11 +55,19 @@ export const PetitionList: React.FC<PotitionListProps> = ({ title, onClick }) =>
         })()
     }, [url])
 
+    const FirstTenData = (data?: any) => {
+        let result = []
+        for (let index = 0; index < 10; index++) {
+            result.push(data ? data[index] : [])
+
+        }
+        return result
+    }
+
     const mockData: TableProps<{ "年份": string; "防疫用藥": string; "預防性用藥": string }> = {
         columns: ["年份", "防疫用藥", "預防性用藥"],
-        data: data as any
+        data: FirstTenData(data) as any
     }
-    
 
     const tableHead =
         <tr>
@@ -76,8 +84,6 @@ export const PetitionList: React.FC<PotitionListProps> = ({ title, onClick }) =>
                 )}
             </tr>)
     })
-
-
 
     return (
         <div className="d-flex flex-column">
