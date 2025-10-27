@@ -1,4 +1,4 @@
-import { useEffect, useState, type JSX, type JSXElementConstructor } from "react"
+import { useEffect, useState, type JSX, type JSXElementConstructor, type ReactNode } from "react"
 import { data, useActionData } from "react-router"
 import Table from 'react-bootstrap/Table';
 interface PotitionListProps {
@@ -63,15 +63,24 @@ export const PetitionList: React.FC<PotitionListProps> = () => {
         return result
     }
 
-    const mockData: TableProps<{ "年份": string; "防疫用藥": string; "預防性用藥": string }> = {
-        columns: ["年份", "防疫用藥", "預防性用藥"],
+
+    // const mockData: TableProps<{ "年份": string; "防疫用藥": string; "預防性用藥": string }> = {
+    //     columns: ["年份", "防疫用藥", "預防性用藥"],
+    //     data: FirstTenData(data) as any
+    // }
+
+    const mockData = {
+        columns: data ? Object.keys((data as Object[])[0])
+            ?.filter((_, index) => index < 3) : [],
         data: FirstTenData(data) as any
-    }
+    } as TableProps<any>
+
+
 
     const tableHead =
         <tr>
             {mockData?.columns?.map((item) =>
-                <th>{item}</th>
+                <th>{item as ReactNode}</th>
             )}
         </tr>
 
