@@ -58,7 +58,6 @@ export const PetitionList: React.FC<PotitionListProps> = () => {
         let result = []
         for (let index = 0; index < 10; index++) {
             result.push(data ? data[index] : [])
-
         }
         return result
     }
@@ -73,23 +72,36 @@ export const PetitionList: React.FC<PotitionListProps> = () => {
         columns: data ? Object.keys((data as Object[])[0])
             ?.filter((_, index) => index < 3) : [],
         data: FirstTenData(data) as any
-    } as TableProps<any>
+    } as TableProps<Record<string, any>>
 
+    //空的-
+    //太多最後25
 
 
     const tableHead =
         <tr>
             {mockData?.columns?.map((item) =>
-                <th>{item as ReactNode}</th>
+                <th>{item}</th>
             )}
         </tr>
 
+    const itemReg = /\.+(.{1,25})/
+    console.log(itemReg.exec({ "年份": "104", "防疫用藥": "亞培松", "預防性用藥": "亞滅寧", "區里消毒用藥": "亞特松" }[("年份") as any])?.[1])
     const tableBody = mockData?.data?.map((item) => {
+        const itemReg = /\.+(.{1,25})/
+        const dataByCondition = (item: any, column: string) => {
+            if (typeof (item[(column) as any]) === undefined) "-"
+            if (item.length > 25) {
+                console.log(itemReg.exec(item[(column) as any])?.[1])
+                return itemReg.exec(item[(column) as any])?.[1]
+            }
+        }
         return (
             <tr>
                 {mockData?.columns?.map((column) =>
-                    <td>{item[column]}</td>
+                    <td>{dataByCondition(item, column) as any}</td>
                 )}
+                { }
             </tr>)
     })
 
