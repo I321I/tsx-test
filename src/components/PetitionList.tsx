@@ -85,16 +85,11 @@ export const PetitionList: React.FC<PotitionListProps> = () => {
             )}
         </tr>
 
-    const itemReg = /\.+(.{1,25})/
-    console.log(itemReg.exec({ "年份": "104", "防疫用藥": "亞培松", "預防性用藥": "亞滅寧", "區里消毒用藥": "亞特松" }[("年份") as any])?.[1])
     const tableBody = mockData?.data?.map((item) => {
-        const itemReg = /\.+(.{1,25})/
         const dataByCondition = (item: any, column: string) => {
-            if (typeof (item[(column) as any]) === undefined) "-"
-            if (item.length > 25) {
-                console.log(itemReg.exec(item[(column) as any])?.[1])
-                return itemReg.exec(item[(column) as any])?.[1]
-            }
+            console.log(typeof item[(column) as any], item[(column) as any])
+            if (typeof (item[(column) as any]) === undefined || typeof (item[(column) as any]) === null || (item[(column) as any]) === "") return "-"
+            return item[(column) as any].slice(-25)
         }
         return (
             <tr>
