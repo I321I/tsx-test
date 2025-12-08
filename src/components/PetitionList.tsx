@@ -2,7 +2,7 @@ import { useEffect, useState, type JSX, type JSXElementConstructor, type ReactNo
 import { data, useActionData } from "react-router"
 import Table from 'react-bootstrap/Table';
 interface PotitionListProps {
-
+    data: any
 }
 
 interface TableProps<T extends object> {
@@ -54,7 +54,7 @@ export const PetitionList: React.FC<PotitionListProps> = () => {
         })()
     }, [url])
 
-    const  FirstTenData = (data?: any) => {
+    const FirstTenData = (data?: any) => {
         let result = []
         for (let index = 0; index < 10; index++) {
             result.push(data ? data[index] : [])

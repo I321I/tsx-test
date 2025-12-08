@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
 
-interface inputFieldProps { }
+interface inputFieldProps { 
+    data: any
+}
 
 
-export const InputField: React.FC<inputFieldProps> = () => {
+export const InputField: React.FC<inputFieldProps> = ({data}) => {
     const [input, setInput] = useState<number | string>(123)
-    const [data, setData] = useState<unknown>()
+    const [objectData, setData] = useState<unknown>()
     useEffect(() => {
         (async () => {
             const response = await fetch(input as any)
@@ -17,8 +19,9 @@ export const InputField: React.FC<inputFieldProps> = () => {
 
     return (
         <div>
-            <input value={input} onChange={(event) => { setInput(event.target.value); console.log(data ? data : []) }}></input>
-            {JSON.stringify(data)}
+            <input value={input} onChange={(event) => { setInput(event.target.value); console.log(objectData ? objectData : []) }}></input>
+            {JSON.stringify(objectData)}
+            {data}
         </div>
 
     )
