@@ -15,7 +15,7 @@ interface Navigation {
 export const navigationConfig = [
     { to: "/", label: "App", element: () => <AnimeList /> },
     { to: "/empty-content", label: "Empty Content", element: () => (<EmptyContent />) },
-    { to: "/petition-list", label: "Petition List", element: (data: any) => (<PetitionList data={data} />) },
+    { to: "/petition-list", label: "Petition List", element: (data:any, onClick: any) => (<PetitionList data={data} onClick={onClick} />) },
     { to: "/input-field", label: "Input Field", element: (data: any) => (<InputField data={data} />) }
 ]
 

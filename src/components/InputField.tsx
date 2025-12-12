@@ -6,7 +6,7 @@ interface inputFieldProps {
 
 
 export const InputField: React.FC<inputFieldProps> = ({data}) => {
-    const [input, setInput] = useState<number | string>(123)
+    const [input, setInput] = useState<number | string>(data)
     const [objectData, setData] = useState<unknown>()
     useEffect(() => {
         (async () => {
@@ -21,7 +21,6 @@ export const InputField: React.FC<inputFieldProps> = ({data}) => {
         <div>
             <input value={input} onChange={(event) => { setInput(event.target.value); console.log(objectData ? objectData : []) }}></input>
             {JSON.stringify(objectData)}
-            {data}
         </div>
 
     )

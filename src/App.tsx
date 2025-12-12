@@ -4,9 +4,9 @@ import { Route, Routes } from 'react-router'
 
 function App() {
   const [count, setCount] = useState(0)
-  const data = "data111"
+  const [url, setUrl] = useState("DataPosition")
   const routes = navigationConfig.map((item) =>
-    <Route path={item.to} element={item.element(data)
+    <Route path={item.to} element={item.element(url, (data: string) => { setUrl(data), console.log(data) })
     } />)
 
 
