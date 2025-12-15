@@ -5,6 +5,7 @@ import EmptyContent from "./EmptyContent";
 import { PetitionList } from "./PetitionList";
 import { InputField } from "./InputField";
 import type { JSX } from "react";
+import { Counter } from "./Counter";
 
 interface Navigation {
     to: string;
@@ -15,8 +16,9 @@ interface Navigation {
 export const navigationConfig = [
     { to: "/", label: "App", element: () => <AnimeList /> },
     { to: "/empty-content", label: "Empty Content", element: () => (<EmptyContent />) },
-    { to: "/petition-list", label: "Petition List", element: (data:any, onClick: any) => (<PetitionList data={data} onClick={onClick} />) },
-    { to: "/input-field", label: "Input Field", element: (data: any) => (<InputField data={data} />) }
+    { to: "/petition-list", label: "Petition List", element: (data: any, onClick: any) => (<PetitionList data={data} onClick={onClick} />) },
+    { to: "/input-field", label: "Input Field", element: (data: any) => (<InputField data={data} />) },
+    { to: "/counter", label: "Counter", element: () => (<Counter />) }
 ]
 
 
