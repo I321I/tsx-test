@@ -9,7 +9,6 @@ interface inputFieldProps {
 export const InputField: React.FC<inputFieldProps> = ({data}) => {
     const [input, setInput] = useState<number | string>(data)
     const [objectData, setData] = useState<unknown>()
-    const counter = useSelector((store: any)=>store.CounterReducer.counterState)
     useEffect(() => {
         (async () => {
             const response = await fetch(input as any)
@@ -23,7 +22,6 @@ export const InputField: React.FC<inputFieldProps> = ({data}) => {
         <div>
             <input value={input} onChange={(event) => { setInput(event.target.value); console.log(objectData ? objectData : []) }}></input>
             {JSON.stringify(objectData)}
-            {counter}
         </div>
 
     )
