@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react"
+import { useEffect, useReducer, useState } from "react"
 import { useSelector } from "react-redux"
+import { useRootSelector } from "../main"
 
-interface inputFieldProps { 
+interface inputFieldProps {
     data: any
 }
 
 
-export const InputField: React.FC<inputFieldProps> = ({data}) => {
+export const InputField: React.FC<inputFieldProps> = ({ data }) => {
     const [input, setInput] = useState<number | string>(data)
     const [objectData, setData] = useState<unknown>()
     useEffect(() => {

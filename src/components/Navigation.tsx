@@ -6,6 +6,7 @@ import { PetitionList } from "./PetitionList";
 import { InputField } from "./InputField";
 import type { JSX } from "react";
 import { Counter } from "./Counter";
+import { UrlFetch } from "./UrlFetch";
 
 interface Navigation {
     to: string;
@@ -18,7 +19,8 @@ export const navigationConfig = [
     { to: "/empty-content", label: "Empty Content", element: () => (<EmptyContent />) },
     { to: "/petition-list", label: "Petition List", element: (data: any, onClick: any) => (<PetitionList data={data} onClick={onClick} />) },
     { to: "/input-field", label: "Input Field", element: (data: any) => (<InputField data={data} />) },
-    { to: "/counter", label: "Counter", element: () => (<Counter />) }
+    { to: "/counter", label: "Counter", element: () => (<Counter />) },
+    { to: "/url-fetch", label: "Url Fetch", element: () => (<UrlFetch />) }
 ]
 
 

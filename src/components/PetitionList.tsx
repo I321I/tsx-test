@@ -1,5 +1,8 @@
 import { useEffect, useState, type JSX, type JSXElementConstructor, type ReactNode } from "react"
 import Table from 'react-bootstrap/Table';
+import { SaveUrl } from "../store/UrlSaver";
+import { _NEVER } from "@reduxjs/toolkit/query";
+import { useRootDispatch } from "../main";
 interface PotitionListProps {
     data: any
     onClick?: (url: string) => void
@@ -36,12 +39,18 @@ const petitionItem = [
 ]
 
 export const PetitionList: React.FC<PotitionListProps> = ({ onClick }) => {
+    const dispatch = useRootDispatch()
     const [url, setUrl] = useState(petitionItem[0].url)
     const [getData, setGetData] = useState(() => petitionItem[0].getData)
     const reg = /.+\/(.+)/
     const pList = petitionItem.map((item) =>
         <button type="button" className="btn btn-link"
-            onClick={() => { setUrl(item.url), setGetData(() => item.getData), onClick?.(item.url) }}>
+            onClick={() => {
+                setUrl(item.url), setGetData(() =>
+                    item.getData),
+                    onClick?.(item.url), //樹狀傳遞
+                    dispatch(SaveUrl(item.url)) //Redux傳遞
+            }}>
             {reg.exec(item.url)?.[1]}
         </button>
     )
@@ -116,5 +125,9 @@ export const PetitionList: React.FC<PotitionListProps> = ({ onClick }) => {
             </div>
         </div>
     )
+}
+
+function dispatch(url: string) {
+    throw new Error("Function not implemented.");
 }
 
