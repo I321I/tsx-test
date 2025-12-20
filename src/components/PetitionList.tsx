@@ -1,6 +1,6 @@
 import { useEffect, useState, type JSX, type JSXElementConstructor, type ReactNode } from "react"
 import Table from 'react-bootstrap/Table';
-import { SaveUrl } from "../store/UrlSaver";
+import { SaveData, SaveUrl } from "../store/UrlSaver";
 import { _NEVER } from "@reduxjs/toolkit/query";
 import { useRootDispatch } from "../main";
 interface PotitionListProps {
@@ -60,6 +60,7 @@ export const PetitionList: React.FC<PotitionListProps> = ({ onClick }) => {
             const response = await fetch(url)
             const data: object | object[] = await response.json()
             setData(getData(data))
+            dispatch(SaveData(getData(data)))
         })()
     }, [url])
 
@@ -126,8 +127,3 @@ export const PetitionList: React.FC<PotitionListProps> = ({ onClick }) => {
         </div>
     )
 }
-
-function dispatch(url: string) {
-    throw new Error("Function not implemented.");
-}
-

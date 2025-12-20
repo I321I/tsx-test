@@ -4,23 +4,11 @@ import { Stack } from "react-bootstrap"
 
 
 export const UrlDataDisplay: React.FC = () => {
-    const UrlPosition = useRootSelector((store) => store.UrlReducer.UrlState)
-    const [objectData, setData] = useState<unknown>()
-    useEffect(() => {
-        (async () => {
-            const response = await fetch(UrlPosition as any)
-            const data: object | object[] = await response.json()
-            setData(data)
-        })()
-    }, [UrlPosition])
-
+    const DataState = useRootSelector((store) => store.UrlReducer.DataState)
 
     return (
         <div>
-            <Stack gap={1}>
-                <div className="p-2">{JSON.stringify(objectData)}</div>
-            </Stack>
-
+            {JSON.stringify(DataState)}
         </div>
 
     )
