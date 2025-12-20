@@ -7,6 +7,7 @@ import { InputField } from "./InputField";
 import type { JSX } from "react";
 import { Counter } from "./Counter";
 import { UrlFetch } from "./UrlFetch";
+import { UrlDataDisplay } from "./UrlDataDisplay";
 
 interface Navigation {
     to: string;
@@ -20,7 +21,8 @@ export const navigationConfig = [
     { to: "/petition-list", label: "Petition List", element: (data: any, onClick: any) => (<PetitionList data={data} onClick={onClick} />) },
     { to: "/input-field", label: "Input Field", element: (data: any) => (<InputField data={data} />) },
     { to: "/counter", label: "Counter", element: () => (<Counter />) },
-    { to: "/url-fetch", label: "Url Fetch", element: () => (<UrlFetch />) }
+    { to: "/url-fetch", label: "Url Fetch", element: () => (<UrlFetch />) },
+    { to: "/url-data-display", label: "Url Data Display", element: () => (<UrlDataDisplay />) }
 ]
 
 
