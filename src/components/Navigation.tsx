@@ -8,6 +8,7 @@ import type { JSX } from "react";
 import { Counter } from "./Counter";
 import { UrlFetch } from "./UrlFetch";
 import { UrlDataDisplay } from "./UrlDataDisplay";
+import { ToDoList } from "./ToDoList";
 
 interface Navigation {
     to: string;
@@ -22,7 +23,8 @@ export const navigationConfig = [
     { to: "/input-field", label: "Input Field", element: (data: any) => (<InputField data={data} />) },
     { to: "/counter", label: "Counter", element: () => (<Counter />) },
     { to: "/url-fetch", label: "Url Fetch", element: () => (<UrlFetch />) },
-    { to: "/url-data-display", label: "Url Data Display", element: () => (<UrlDataDisplay />) }
+    { to: "/url-data-display", label: "Url Data Display", element: () => (<UrlDataDisplay />) },
+    { to: "/to-do-list", label: "To Do List", element: () => (<ToDoList />) }
 ]
 
 
