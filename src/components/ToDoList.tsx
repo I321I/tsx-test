@@ -1,6 +1,7 @@
 import type React from "react"
 import styles123 from "./ToDoList.module.scss"
 import { InputProp } from "./ToDoListInput"
+import { ToDoListContent } from "./ToDoListContent"
 
 
 export const ToDoList: React.FC = () => {
@@ -9,6 +10,8 @@ export const ToDoList: React.FC = () => {
             <div className={styles123.background + " " + "background mx-auto position-absolute top-5 start-0"}>
                 <div className={styles123.ToDoList + " " + "ToDoList"}>
                     <InputProp></InputProp>
+                    <div className={styles123.inputBlock}></div>
+                    <ToDoListContent></ToDoListContent>
                 </div>
             </div>
     )

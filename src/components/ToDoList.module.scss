@@ -23,23 +23,53 @@
     flex-direction: column;
 
     padding: 20px;
-
-
 }
 
 .inputProp {
     display: flex;
-    gap: 10px
+    height: 70px;
+    //content
+    gap: 25px;
+    align-items: center;
 }
 
 .input {
+    width: 90%;
+    height: 70%;
     border-style: solid;
     border-radius: 5px;
     border-width: 1px;
     outline-color: #2261CB;
+    padding-left: 15px;
 }
 
 .inputButton {
-    height: 29px;
+    width: 100px;
+    height: 70%;
     align-items: center;
+}
+
+.inputBlock {
+    height: 55px;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    height: 55px;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: #BED2D5;
+    background-color: #C5E1E5;
+    align-items: center;
+}
+
+.contentText {}
+
+.contentButton {
+    height: 40px;
+    width: 40px;
+    background-color: #1D1BA3 !important;
+    border-color: #1D1BA3!important;
 }
