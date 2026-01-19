@@ -1,0 +1,45 @@
+.background {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #2161CB;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.ToDoList {
+    //顏色
+    background-color: white;
+    //大小
+    width: 60%;
+    height: 50%;
+    max-width: 650px;
+    //flex
+    display: flex;
+    border-radius: 5px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    padding: 20px;
+
+
+}
+
+.inputProp {
+    display: flex;
+    gap: 10px
+}
+
+.input {
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    outline-color: #2261CB;
+}
+
+.inputButton {
+    height: 29px;
+    align-items: center;
+}
