@@ -1,14 +1,20 @@
 import type React from "react"
 import styles123 from "./ToDoList.module.scss"
 import { Button } from "react-bootstrap"
+import { Fragment } from "react"
+interface ToDoListContent {
+    content: string | number
+    onClick: () => void
+}
 
-export const ToDoListContent: React.FC = () => {
+export const ToDoListContent: React.FC<ToDoListContent> = ({ content, onClick }) => {
     return (
-        <div className={styles123.content} >
-            <div className={styles123.contentText + " " + "container-fluid"}>123
-                <button className={styles123.contentButton} variant="primary">🗑️</button>
-                <Button size="lg" className={styles123.contentButton} >🗑️</Button>
-            </div>
-        </div >
+        <Fragment>
+            <div className={styles123.contentBlock}></div>
+            <div className={styles123.content + " container-fluid"} >
+                <div style={{ fontSize: "larger" }} className={styles123.contentText}>{content}</div>
+                <Button onClick={onClick} style={{ backgroundColor: "#1D1BA3", borderColor: "#1D1BA3" }} size="sm" className={styles123.contentButton} >🗑️</Button>
+            </div >
+        </Fragment>
     )
 }

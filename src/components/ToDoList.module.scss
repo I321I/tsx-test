@@ -1,7 +1,7 @@
 .background {
     display: flex;
     width: 100%;
-    height: 100%;
+    height: 95%;
     background-color: #2161CB;
     flex-wrap: wrap;
     justify-content: center;
@@ -14,10 +14,10 @@
     //大小
     width: 60%;
     height: 50%;
-    max-width: 650px;
+    max-width: 500px;
     //flex
     display: flex;
-    border-radius: 5px;
+    border-radius: 15px;
     flex-direction: column;
     flex-wrap: wrap;
     flex-direction: column;
@@ -47,10 +47,11 @@
     width: 100px;
     height: 70%;
     align-items: center;
+
 }
 
 .inputBlock {
-    height: 55px;
+    height: 45px;
 }
 
 .content {
@@ -59,17 +60,23 @@
     height: 55px;
     border-style: solid;
     border-radius: 5px;
-    border-width: 2px;
+    border-width: 3px;
     border-color: #BED2D5;
     background-color: #C5E1E5;
+    justify-content: space-between;
     align-items: center;
 }
 
-.contentText {}
+.contentText {
+    font-size: large;
+
+}
 
 .contentButton {
     height: 40px;
     width: 40px;
-    background-color: #1D1BA3 !important;
-    border-color: #1D1BA3!important;
+}
+
+.contentBlock {
+    height: 10px;
 }
