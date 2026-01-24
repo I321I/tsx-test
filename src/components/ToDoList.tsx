@@ -3,17 +3,18 @@ import styles123 from "./ToDoList.module.scss"
 import { InputProp } from "./ToDoListInput"
 import { ToDoListContent } from "./ToDoListContent"
 import { useEffect, useState } from "react"
+import { v4 as uuidv4 } from 'uuid';
 
 
 export const ToDoList: React.FC = () => {
-    const [toDoListInput, setInput] = useState<any[]>([])
+    const [toDoList, setToDoList] = useState<{ id: string, content: string }[]>([])
     //項目加入的變數，增減增減能夠改變此變數
-    const TdlContent = toDoListInput.map((content, i) =>
-        <ToDoListContent key={content} content={content} onClick={() => {
-            setInput([
-                ...toDoListInput.slice(0, i),
-                ...toDoListInput.slice(i + 1, toDoListInput.length)
-            ]);console.log(toDoListInput)
+    const TdlContent = toDoList.map((todo, i) =>
+        <ToDoListContent key={todo.id} content={todo.content} onClick={() => {
+            setToDoList([
+                ...toDoList.slice(0, i),
+                ...toDoList.slice(i + 1, toDoList.length)
+            ]); console.log(toDoList)
         }}>
         </ToDoListContent >
     )
@@ -22,7 +23,7 @@ export const ToDoList: React.FC = () => {
     return (
         <div className={styles123.background + " " + "background mx-auto position-absolute top-5 start-0"}>
             <div className={styles123.ToDoList + " " + "ToDoList"}>
-                <InputProp onClick={(input) => { setInput([...toDoListInput, input]) }}></InputProp>
+                <InputProp onClick={(input) => { setToDoList([...toDoList, { id: uuidv4(), content: input as string }]) }}></InputProp>
                 <div className={styles123.inputBlock}></div>
                 {TdlContent}
             </div>
