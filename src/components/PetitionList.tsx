@@ -72,6 +72,44 @@ export const PetitionList: React.FC<PotitionListProps> = ({ onClick }) => {
         return result
     }
 
+    // TODO: for functional programming teaching
+    const setMinusMarkIfEmpty = ({ data, columns }: { data: any[]; columns: string[] }) => {
+        return {
+            data: data.map(item => {
+                return columns.reduce((acc, column) => {
+                    return {
+                        ...acc,
+                        [column]: typeof (item[column] as any) === undefined || typeof (item[column] as any) === null || (item[column] as any) === "" ? "-" : item[column]
+                    }
+                }, {} as Record<string, any>)
+            }),
+            columns: columns
+        }
+    }
+
+
+    const getLast25Chars = ({ data, columns }: { data: any[]; columns: string[] }) =>
+    ({
+        data: data.map(item =>
+            columns.reduce((acc, column) => ({ ...acc, [column]: item[(column) as any].slice(-25) })
+                , {} as Record<string, any>)
+        ),
+        columns: columns
+    })
+
+    const CalculateData = ({ data, columns }: { data: any[]; columns: string[] }) =>
+    ({
+        data: data.map(item =>
+            columns.reduce((acc, column) => {
+                let result = typeof (item[column] as any) === undefined || typeof (item[column] as any) === null || (item[column] as any) === "" ? "-" : item[column]
+                result = result.slice(-25)
+                return { ...acc, [column]: result }
+            }
+                , {} as Record<string, any>)
+        ),
+        columns: columns
+    })
+
 
     // const mockData: TableProps<{ "年份": string; "防疫用藥": string; "預防性用藥": string }> = {
     //     columns: ["年份", "防疫用藥", "預防性用藥"],
