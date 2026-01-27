@@ -1,12 +1,14 @@
 import { useEffect, useState, type JSX, type JSXElementConstructor, type ReactNode } from "react"
-import { data, useActionData } from "react-router"
 import Table from 'react-bootstrap/Table';
+import { SaveData, SaveUrl } from "../store/UrlSaver";
+import { _NEVER } from "@reduxjs/toolkit/query";
+import { useRootDispatch } from "../main";
 interface PotitionListProps {
-
+    data: any
+    onClick?: (url: string) => void
 }
 
 interface TableProps<T extends object> {
-    
     columns: (keyof T)[]
     data: T[]
 }
@@ -35,14 +37,20 @@ const petitionItem = [
         getData: (item: unknown) => item
     }
 ]
-export const PetitionList: React.FC<PotitionListProps> = () => {
-    const pItem = petitionItem
-    const [url, setUrl] = useState(pItem[0].url)
-    const [getData, setGetData] = useState(() => pItem[0].getData)
+
+export const PetitionList: React.FC<PotitionListProps> = ({ onClick }) => {
+    const dispatch = useRootDispatch()
+    const [url, setUrl] = useState(petitionItem[0].url)
+    const [getData, setGetData] = useState(() => petitionItem[0].getData)
     const reg = /.+\/(.+)/
-    const pList = pItem.map((item) =>
+    const pList = petitionItem.map((item) =>
         <button type="button" className="btn btn-link"
-            onClick={() => { setUrl(item.url), setGetData(() => item.getData) }}>
+            onClick={() => {
+                setUrl(item.url), setGetData(() =>
+                    item.getData),
+                    onClick?.(item.url), //樹狀傳遞
+                    dispatch(SaveUrl(item.url)) //Redux傳遞
+            }}>
             {reg.exec(item.url)?.[1]}
         </button>
     )
@@ -52,10 +60,11 @@ export const PetitionList: React.FC<PotitionListProps> = () => {
             const response = await fetch(url)
             const data: object | object[] = await response.json()
             setData(getData(data))
+            dispatch(SaveData(getData(data)))
         })()
     }, [url])
 
-    const  FirstTenData = (data?: any) => {
+    const FirstTenData = (data?: any) => {
         let result = []
         for (let index = 0; index < 10; index++) {
             result.push(data ? data[index] : [])
@@ -88,7 +97,7 @@ export const PetitionList: React.FC<PotitionListProps> = () => {
 
     const tableBody = mockData?.data?.map((item) => {
         const dataByCondition = (item: any, column: string) => {
-            console.log(typeof item[(column) as any], item[(column) as any])
+            // console.log(typeof item[(column) as any], item[(column) as any])
             if (typeof (item[(column) as any]) === undefined || typeof (item[(column) as any]) === null || (item[(column) as any]) === "") return "-"
             return item[(column) as any].slice(-25)
         }
@@ -118,4 +127,3 @@ export const PetitionList: React.FC<PotitionListProps> = () => {
         </div>
     )
 }
-
