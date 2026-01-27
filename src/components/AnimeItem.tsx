@@ -1,5 +1,3 @@
-import { recentUpdateAnime } from "../constant";
-import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import CloseButton from 'react-bootstrap/CloseButton'
 import { useState } from "react";
