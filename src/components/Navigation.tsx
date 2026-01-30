@@ -8,7 +8,7 @@ import type { JSX } from "react";
 import { Counter } from "./Counter";
 import { UrlFetch } from "./UrlFetch";
 import { UrlDataDisplay } from "./UrlDataDisplay";
-import { ToDoList } from "./ToDoList";
+import { ToDoList } from "./ToDoList_redux";
 
 interface Navigation {
     to: string;

@@ -1,7 +1,7 @@
 import type React from "react"
-import styles123 from "./ToDoList.module.scss"
-import { InputProp } from "./ToDoListInput"
-import { ToDoListContent } from "./ToDoListContent"
+import styles123 from "./ToDoList_redux.module.scss"
+import { InputProp } from "./ToDoListInput_redux"
+import { ToDoListContent } from "./ToDoListContent_redux"
 import { useEffect, useState } from "react"
 import { v4 as uuidv4 } from 'uuid';
 

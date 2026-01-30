@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap"
-import styles123 from "./ToDoList.module.scss"
+import styles123 from "./ToDoList_redux.module.scss"
 import { useEffect, useState } from "react"
 interface InputProp {
     onClick: (input: string | number | undefined) => void
