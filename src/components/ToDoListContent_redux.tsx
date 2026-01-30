@@ -13,8 +13,8 @@ export const ToDoListContent: React.FC<ToDoListContent> = ({ content, onClick })
             <div className={styles123.contentBlock}></div>
             <div className={styles123.content + " container-fluid"} >
                 <div style={{ fontSize: "larger" }} className={styles123.contentText}>{content}</div>
-                <Button onClick={onClick} style={{ backgroundColor: "#1D1BA3", borderColor: "#1D1BA3" }} size="sm" className={styles123.contentButton} >🗑️</Button>
+                <Button onClick={onClick} size="sm" className={styles123.contentButton + " " + styles123.deleteBtn} >🗑️</Button>
             </div >
-        </Fragment>
+        </Fragment >
     )
 }
