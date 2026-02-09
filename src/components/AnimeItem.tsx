@@ -7,7 +7,7 @@ interface AnimeItemProps {
     onClick: () => void
 }
 export const AnimeItem: React.FC<AnimeItemProps> = ({ title, onClick }) => {
-    const [tit, setTit] = useState(title)
+    const [tit] = useState(title)
     return (
         <ListGroup.Item id="AnimeItem" className="d-flex justify-content-between"> 
             {title} {tit}

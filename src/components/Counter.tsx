@@ -1,5 +1,4 @@
 import { Button } from "react-bootstrap"
-import { useDispatch, useSelector } from "react-redux"
 //這decrement, increment是function，會生出參數，而不是功能本身
 import { decrement, increment } from "../store/Counter"
 import { useRootDispatch, useRootSelector } from "../main"
