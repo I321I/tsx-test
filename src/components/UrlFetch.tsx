@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react"
+import { useEffect, useState } from "react"
 import { useRootSelector } from "../main"
 import { Stack } from "react-bootstrap"
 
@@ -8,7 +8,7 @@ export const UrlFetch: React.FC = () => {
     const [objectData, setData] = useState<unknown>()
     useEffect(() => {
         (async () => {
-            const response = await fetch(UrlPosition as any)
+            const response = await fetch(UrlPosition)
             const data: object | object[] = await response.json()
             setData(data)
         })()

@@ -1,10 +1,9 @@
-import { useEffect, useState, type JSX, type JSXElementConstructor, type ReactNode } from "react"
+import { useEffect, useState } from "react"
 import Table from 'react-bootstrap/Table';
 import { SaveData, SaveUrl } from "../store/UrlSaver";
-import { _NEVER } from "@reduxjs/toolkit/query";
 import { useRootDispatch } from "../main";
 interface PotitionListProps {
-    data: any
+    data: unknown
     onClick?: (url: string) => void
 }
 
@@ -46,10 +45,10 @@ export const PetitionList: React.FC<PotitionListProps> = ({ onClick }) => {
     const pList = petitionItem.map((item) =>
         <button type="button" className="btn btn-link"
             onClick={() => {
-                setUrl(item.url), setGetData(() =>
-                    item.getData),
-                    onClick?.(item.url), //樹狀傳遞
-                    dispatch(SaveUrl(item.url)) //Redux傳遞
+                setUrl(item.url);
+                setGetData(() => item.getData);
+                onClick?.(item.url); //樹狀傳遞
+                dispatch(SaveUrl(item.url)); //Redux傳遞
             }}>
             {reg.exec(item.url)?.[1]}
         </button>
@@ -62,53 +61,15 @@ export const PetitionList: React.FC<PotitionListProps> = ({ onClick }) => {
             setData(getData(data))
             dispatch(SaveData(getData(data)))
         })()
-    }, [url])
+    }, [url, getData, dispatch])
 
-    const FirstTenData = (data?: any) => {
-        let result = []
+    const FirstTenData = (data?: unknown) => {
+        const result = []
         for (let index = 0; index < 10; index++) {
-            result.push(data ? data[index] : [])
+            result.push(data ? (data as object[])[index] : [])
         }
         return result
     }
-
-    // TODO: for functional programming teaching
-    const setMinusMarkIfEmpty = ({ data, columns }: { data: any[]; columns: string[] }) => {
-        return {
-            data: data.map(item => {
-                return columns.reduce((acc, column) => {
-                    return {
-                        ...acc,
-                        [column]: typeof (item[column] as any) === undefined || typeof (item[column] as any) === null || (item[column] as any) === "" ? "-" : item[column]
-                    }
-                }, {} as Record<string, any>)
-            }),
-            columns: columns
-        }
-    }
-
-
-    const getLast25Chars = ({ data, columns }: { data: any[]; columns: string[] }) =>
-    ({
-        data: data.map(item =>
-            columns.reduce((acc, column) => ({ ...acc, [column]: item[(column) as any].slice(-25) })
-                , {} as Record<string, any>)
-        ),
-        columns: columns
-    })
-
-    const CalculateData = ({ data, columns }: { data: any[]; columns: string[] }) =>
-    ({
-        data: data.map(item =>
-            columns.reduce((acc, column) => {
-                let result = typeof (item[column] as any) === undefined || typeof (item[column] as any) === null || (item[column] as any) === "" ? "-" : item[column]
-                result = result.slice(-25)
-                return { ...acc, [column]: result }
-            }
-                , {} as Record<string, any>)
-        ),
-        columns: columns
-    })
 
 
     // const mockData: TableProps<{ "年份": string; "防疫用藥": string; "預防性用藥": string }> = {
@@ -117,10 +78,10 @@ export const PetitionList: React.FC<PotitionListProps> = ({ onClick }) => {
     // }
 
     const mockData = {
-        columns: data ? Object.keys((data as Object[])[0])
+        columns: data ? Object.keys((data as object[])[0])
             ?.filter((_, index) => index < 3) : [],
-        data: FirstTenData(data) as any
-    } as TableProps<Record<string, any>>
+        data: FirstTenData(data)
+    } as TableProps<Record<string, unknown>>
 
     //空的-
     //太多最後25
@@ -134,15 +95,15 @@ export const PetitionList: React.FC<PotitionListProps> = ({ onClick }) => {
         </tr>
 
     const tableBody = mockData?.data?.map((item) => {
-        const dataByCondition = (item: any, column: string) => {
+        const dataByCondition = (item: Record<string, unknown>, column: string) => {
             // console.log(typeof item[(column) as any], item[(column) as any])
-            if (typeof (item[(column) as any]) === undefined || typeof (item[(column) as any]) === null || (item[(column) as any]) === "") return "-"
-            return item[(column) as any].slice(-25)
+            if (item[column] === undefined || item[column] === null || item[column] === "") return "-"
+            return (item[(column)] as string).slice(-25)
         }
         return (
             <tr>
                 {mockData?.columns?.map((column) =>
-                    <td>{dataByCondition(item, column) as any}</td>
+                    <td>{dataByCondition(item, column)}</td>
                 )}
                 { }
             </tr>)
