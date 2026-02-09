@@ -26,9 +26,13 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' }}
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.tsxTestToken }}
-          publish_dir: ./dist # The directory where Vite outputs static files
+          # Upload the 'dist' directory as the artifact
+          path: './dist'
+      - name: Deploy to GitHub Pages
+        id: deployment-url
+        uses: actions/deploy-pages@v4
