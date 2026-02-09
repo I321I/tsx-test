@@ -1,4 +1,4 @@
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, test } from "vitest";
+import { describe, expect, test } from "vitest";
 import { AnimeListGenerateAnimeItems } from "./AnimeList";
 
 describe("AnimeList Component", () => {
@@ -7,7 +7,7 @@ describe("AnimeList Component", () => {
   });
 
   test("generates empty anime items correctly", () => {
-    let animeSource: string[] = [];
+    const animeSource: string[] = [];
 
     const result = AnimeListGenerateAnimeItems(animeSource, () => { });
 
@@ -16,7 +16,7 @@ describe("AnimeList Component", () => {
 
   })
   test("generates anime items correctly", () => {
-    let animeSource: string[] = ["Naruto", "One Piece", "Bleach"];
+    const animeSource: string[] = ["Naruto", "One Piece", "Bleach"];
 
     const result = AnimeListGenerateAnimeItems(animeSource, () => { });
 
@@ -24,6 +24,12 @@ describe("AnimeList Component", () => {
     expect(typeof result[0]).eq("object");
     expect(result[0].key).toBe("Naruto");
 
+  });
+  test("除法測試", () => {
+    expect(10 * 3 / 2).toBe(5);
+  });
+  test("除法測試", () => {
+    expect(10*3 / 0).toBe(null);
   });
   //test1
   // excel -> raw data

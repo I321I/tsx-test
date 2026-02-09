@@ -7,9 +7,10 @@ const todoList = createSlice({
         addTodo: (state, action) => { state.todoListState.push(action.payload) },
         removeTodo: (state, action) => {
             const rmId = action.payload.id
-            state.todoListState = state.todoListState.filter(item => { item.id !== rmId })
+            state.todoListState = state.todoListState.filter(item => item.id !== rmId)
         }
     }
 })
+
 export const { addTodo, removeTodo } = todoList.actions
 export default todoList.reducer

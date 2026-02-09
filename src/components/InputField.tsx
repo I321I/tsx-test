@@ -1,18 +1,16 @@
-import { useEffect, useReducer, useState } from "react"
-import { useSelector } from "react-redux"
-import { useRootSelector } from "../main"
+import { useEffect, useState } from "react"
 
 interface inputFieldProps {
-    data: any
+    data: unknown
 }
 
 
 export const InputField: React.FC<inputFieldProps> = ({ data }) => {
-    const [input, setInput] = useState<number | string>(data)
+    const [input, setInput] = useState<number | string>(data as number || "")
     const [objectData, setData] = useState<unknown>()
     useEffect(() => {
         (async () => {
-            const response = await fetch(input as any)
+            const response = await fetch(input as string)
             const data: object | object[] = await response.json()
             setData(data)
         })()
