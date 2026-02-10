@@ -16,5 +16,5 @@ export const navigationConfig = [
     { to: "/counter", label: "Counter", element: () => (<Counter />) },
     { to: "/url-fetch", label: "Url Fetch", element: () => (<UrlFetch />) },
     { to: "/url-data-display", label: "Url Data Display", element: () => (<UrlDataDisplay />) },
-    { to: "/to-do-list", label: "To Do List", element: () => (<ToDoList />) }
+    { to: "/todo-list-redux", label: "Todo List Redux", element: () => (<ToDoList />) }
 ]
