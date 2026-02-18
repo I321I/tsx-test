@@ -25,7 +25,7 @@ export const useRootSelector = useSelector.withTypes<RootState>()
 export const useRootDispatch = useDispatch.withTypes<RootDispatch>()
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+  <StrictMode>dd
     <BrowserRouter>
       {/* 放入Provider */}
       <Provider store={store}>

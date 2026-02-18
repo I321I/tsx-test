@@ -3,11 +3,11 @@ import styles123 from "./ToDoList_redux.module.scss"
 import { InputProp } from "./ToDoListInput_redux"
 import { ToDoListContent } from "./ToDoListContent_redux"
 import { v4 as uuidv4 } from 'uuid';
-import { useRootDispatch, useRootSelector } from "../main"
+import { useRootDispatch, useRootSelector } from "../main1"
 import { addTodo, removeTodo } from "../store/todoList"
 
 
-export const ToDoList: React.FC = () => {
+export const ToDoListRedux: React.FC = () => {
     const todo = useRootSelector((store) => store.todoListReducer.todoListState)
     const dispatch = useRootDispatch()
     //項目加入的變數，增減增減能夠改變此變數

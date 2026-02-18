@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import Table from 'react-bootstrap/Table';
 import { SaveData, SaveUrl } from "../store/UrlSaver";
-import { useRootDispatch } from "../main";
+import { useRootDispatch } from "../main1";
 interface PotitionListProps {
     data: unknown
     onClick?: (url: string) => void

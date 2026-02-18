@@ -1,4 +1,4 @@
-import { useRootSelector } from "../main"
+import { useRootSelector } from "../main1"
 
 
 export const UrlDataDisplay: React.FC = () => {

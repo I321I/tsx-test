@@ -6,7 +6,7 @@ import { InputField } from "./InputField";
 import { Counter } from "./Counter";
 import { UrlFetch } from "./UrlFetch";
 import { UrlDataDisplay } from "./UrlDataDisplay";
-import { ToDoList } from "./ToDoList_redux";
+import { ToDoListRedux } from "./ToDoList_redux";
 
 export const navigationConfig = [
     { to: "/", label: "App", element: () => <AnimeList /> },
@@ -16,5 +16,5 @@ export const navigationConfig = [
     { to: "/counter", label: "Counter", element: () => (<Counter />) },
     { to: "/url-fetch", label: "Url Fetch", element: () => (<UrlFetch />) },
     { to: "/url-data-display", label: "Url Data Display", element: () => (<UrlDataDisplay />) },
-    { to: "/todo-list-redux", label: "Todo List Redux", element: () => (<ToDoList />) }
+    { to: "/todo-list-redux", label: "Todo List Redux", element: () => (<ToDoListRedux />) }
 ]
