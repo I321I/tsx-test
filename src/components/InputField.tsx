@@ -16,7 +16,6 @@ export const InputField: React.FC<inputFieldProps> = ({ data }) => {
         })()
     }, [input])
 
-
     return (
         <div>
             <input value={input} onChange={(event) => { setInput(event.target.value); console.log(objectData ? objectData : []) }}></input>

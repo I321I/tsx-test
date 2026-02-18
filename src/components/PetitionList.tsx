@@ -37,6 +37,7 @@ const petitionItem = [
     }
 ]
 
+
 export const PetitionList: React.FC<PotitionListProps> = ({ onClick }) => {
     const dispatch = useRootDispatch()
     const [url, setUrl] = useState(petitionItem[0].url)
