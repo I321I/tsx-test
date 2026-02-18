@@ -26,7 +26,7 @@ export const useRootDispatch = useDispatch.withTypes<RootDispatch>()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='/tsx-test'>
       {/* 放入Provider */}
       <Provider store={store}>
         <App></App>
