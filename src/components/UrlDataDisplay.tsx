@@ -1,4 +1,4 @@
-import { useRootSelector } from "../main"
+import { useRootSelector } from "../store/StoreType"
 
 
 export const UrlDataDisplay: React.FC = () => {
@@ -8,6 +8,5 @@ export const UrlDataDisplay: React.FC = () => {
         <div>
             {JSON.stringify(DataState)}
         </div>
-
     )
 }

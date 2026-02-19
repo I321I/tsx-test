@@ -1,9 +1,9 @@
 import type React from "react"
 import styles123 from "./ToDoList_redux.module.scss"
-import { InputProp } from "./ToDoListInput_redux"
-import { ToDoListContent } from "./ToDoListContent_redux"
+import { InputProp } from "./ToDoListInput"
+import { ToDoListContent } from "./ToDoListContent"
 import { v4 as uuidv4 } from 'uuid';
-import { useRootDispatch, useRootSelector } from "../main"
+import { useRootDispatch, useRootSelector } from "../store/StoreType"
 import { addTodo, removeTodo } from "../store/todoList"
 
 

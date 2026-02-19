@@ -4,8 +4,9 @@ import react from '@vitejs/plugin-react'
 import { githubPagesSpa } from "@sctg/vite-plugin-github-pages-spa";
 
 // https://vite.dev/config/
-export default defineConfig(({ command }) => {
+export default defineConfig(() => {
   const baseConfig: UserConfig = {
+    base: '/tsx-test/',
     plugins: [react(),
     githubPagesSpa({
       verbose: false
@@ -18,8 +19,5 @@ export default defineConfig(({ command }) => {
       }
     }
   }
-
-  if (command === 'build') return { ...baseConfig, base: '/tsx-test/' }
-
   return baseConfig
 })
