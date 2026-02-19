@@ -34,7 +34,7 @@ export const todosApi = createApi({
                 url: `/${id}`,
                 method: 'DELETE',
             }),
-            invalidatesTags: (result, error, id) => [{ type: 'Todo', id: id }]
+            invalidatesTags: (_result, _error, id) => [{ type: 'Todo', id: id }]
         })
     }),
 }
