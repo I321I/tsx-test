@@ -2,35 +2,35 @@ import type React from "react"
 import styles123 from "./ToDoList_API.module.scss"
 import { InputProp } from "./ToDoListInput"
 import { ToDoListContent } from "./ToDoListContent"
-import { stringify, v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import { useEffect, useState } from "react";
 
-
+interface json {
+    id: string
+    title: string
+}
 export const ToDoListAPI: React.FC = () => {
-    const [data, setData] = useState(undefined)
-
+    const [data, setData] = useState<json[] | []>([])
+    const [reRenderState, reRender] = useState(0)
     useEffect(() => {
         //查
         (async () => {
             const getAPI = await fetch('https://todo-backend-worker.yeh19921026.workers.dev/api/todos')
-            const result = getAPI
-            console.log(result)
+            const result: json[] = await getAPI.json()
+            setData(result)
         })()
-    }, [])
-    const TdlContent = /*todo.map((todo)*/
-        () => {
-            return (<ToDoListContent key={
-                123
-                // todo.id
-            } content={
-                123
-                // todo.content
-            } onClick={() => {
-                //刪
-                // dispatch(removeTodo(todo))
-            }}>
-            </ToDoListContent >)
-        }
+    }, [reRenderState])
+    const TdlContent = data?.map((todo) => {
+        return (<ToDoListContent key={todo.id} content={todo.title} onClick={async () => {
+            //刪
+            await fetch(`https://todo-backend-worker.yeh19921026.workers.dev/api/todos/${todo.id}`,
+                {
+                    method: 'DELETE',
+                })
+            reRender(reRenderState + 1)
+        }}>
+        </ToDoListContent >)
+    })
 
     return (
         <div className={styles123.background + " " + "background mx-auto position-absolute top-5 start-0"}>
@@ -41,16 +41,17 @@ export const ToDoListAPI: React.FC = () => {
                         await fetch('https://todo-backend-worker.yeh19921026.workers.dev/api/todos',
                             {
                                 method: 'POST',
-                                body: encodeURI(JSON.stringify({
+                                body: JSON.stringify({
+                                    title: input as string,
                                     id: uuidv4(),
-                                    content: input as string
-                                })),
+                                }),
                                 headers: { "content-type": "application/json" }
                             })
+                        reRender(reRenderState + 1)
                     })()
                 }}></InputProp>
                 <div className={styles123.inputBlock}></div>
-                {/* {TdlContent} */}
+                {TdlContent}
             </div>
         </div >
     )
