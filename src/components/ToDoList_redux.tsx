@@ -3,7 +3,7 @@ import styles123 from "./ToDoList_redux.module.scss"
 import { InputProp } from "./ToDoListInput"
 import { ToDoListContent } from "./ToDoListContent"
 import { v4 as uuidv4 } from 'uuid';
-import { useRootDispatch, useRootSelector } from "../store/StoreType"
+import { useRootDispatch, useRootSelector } from "../store/StoreConfigure"
 import { addTodo, removeTodo } from "../store/todoList"
 
 

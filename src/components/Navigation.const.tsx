@@ -8,6 +8,7 @@ import { UrlFetch } from "./UrlFetch";
 import { UrlDataDisplay } from "./UrlDataDisplay";
 import { ToDoList } from "./ToDoList_redux";
 import { ToDoListAPI } from "./ToDoList_API";
+import { ToDoListMiddleware } from "./ToDoList_middleware";
 
 export const navigationConfig = [
     { to: "/", label: "App", element: () => <AnimeList /> },
@@ -18,5 +19,6 @@ export const navigationConfig = [
     { to: "/url-fetch", label: "Url Fetch", element: () => (<UrlFetch />) },
     { to: "/url-data-display", label: "Url Data Display", element: () => (<UrlDataDisplay />) },
     { to: "/todo-list-redux", label: "Todo List Redux", element: () => (<ToDoList />) },
-    { to: "/todo-list-API", label: "Todo List API", element: () => (<ToDoListAPI />) }
+    { to: "/todo-list-API", label: "Todo List API", element: () => (<ToDoListAPI />) },
+    { to: "/todo-list-Middleware", label: "Todo List Middleware", element: () => (<ToDoListMiddleware />) }
 ]

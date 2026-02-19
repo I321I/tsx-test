@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useRootSelector } from "../store/StoreType"
+import { useRootSelector } from "../store/StoreConfigure"
 import { Stack } from "react-bootstrap"
 
 

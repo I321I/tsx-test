@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap"
 //這decrement, increment是function，會生出參數，而不是功能本身
 import { decrement, increment } from "../store/Counter"
-import { useRootDispatch, useRootSelector } from "../store/StoreType"
+import { useRootDispatch, useRootSelector } from "../store/StoreConfigure"
 
 export const Counter: React.FC = () => {
     const counter = useRootSelector((store) => store.CounterReducer.counterState)

@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import reducer from './Counter.ts';
 import UrlReducer from './UrlSaver.ts';
 import todoListReducer from './todoList.ts';
+import { todosApi } from './CreateApi.ts';
 
 //生出實體
 export const store = configureStore({
@@ -10,7 +11,10 @@ export const store = configureStore({
         CounterReducer: reducer,
         UrlReducer: UrlReducer,
         todoListReducer: todoListReducer,
-    }
+        [todosApi.reducerPath]: todosApi.reducer,
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(todosApi.middleware)
 })
 
 type RootState = ReturnType<typeof store.getState>

@@ -1,4 +1,4 @@
-import { useRootSelector } from "../store/StoreType"
+import { useRootSelector } from "../store/StoreConfigure"
 
 
 export const UrlDataDisplay: React.FC = () => {
