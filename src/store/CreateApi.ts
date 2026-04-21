@@ -7,7 +7,7 @@ interface apiContent {
 
 export const todosApi = createApi({
     reducerPath: 'todosApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://todo-backend-worker.yeh19921026.workers.dev/api/todos' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api/todos' }),
     tagTypes: ['Todo'],
     endpoints: (build) => ({
         getTodos: build.query<apiContent[], void>({
