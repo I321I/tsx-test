@@ -1,5 +1,6 @@
 import { lazy } from 'react'
 import { ThrottleTest } from './ThrottleTest'
+import { DebounceTest } from './DebounceTest'
 const AnimeList = lazy(() => import("./AnimeList").then(module => ({ default: module.AnimeList })))
 const EmptyContent = lazy(() => import("./EmptyContent"))
 const PetitionList = lazy(() => import("./PetitionList").then(module => ({ default: module.PetitionList })))
@@ -23,5 +24,6 @@ export const navigationConfig = [
     { to: "/todo-list-redux", label: "Todo List Redux", element: () => (<ToDoList />) },
     { to: "/todo-list-API", label: "Todo List API", element: () => (<ToDoListAPI />) },
     { to: "/todo-list-Middleware", label: "Todo List Middleware", element: () => (<ToDoListMiddleware />) },
-    { to: "/throttle", label: "Throttle", element: () => (<ThrottleTest />) }
+    { to: "/throttle", label: "Throttle", element: () => (<ThrottleTest />) },
+    { to: "/debounce", label: "Debounce", element: () => (<DebounceTest />) }
 ]
